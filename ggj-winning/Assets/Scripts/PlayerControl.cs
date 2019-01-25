@@ -29,12 +29,24 @@ public class PlayerControl : MonoBehaviour
         }
 
 
+
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0.0f );
         moveDirection = transform.TransformDirection(moveDirection);
         moveDirection = moveDirection * speed;
 
         // Move the controller
         controller.Move(moveDirection * Time.deltaTime);
+
+        for (int i = 0; i < 4; i++)
+        {
+            if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.1 ||
+                Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.1)
+            {
+                Debug.Log(Input.GetJoystickNames()[i] + i + " is moved");
+            }
+        }
+
+
 
     }
 }
