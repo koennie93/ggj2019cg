@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     public Text playerOneScore;
     public Text playerTwoScore;
 
+    public Vector3 newPosition;
+
     public string message;
 
     // Start is called before the first frame update
@@ -31,6 +33,10 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            playerOneText.transform.position += newPosition;
+        }
     }
 
     IEnumerator TypeText(string text, Text textElement)
