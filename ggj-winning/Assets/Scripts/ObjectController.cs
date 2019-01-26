@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
+
+public enum ObjectState
+{
+    IDLE,
+    SHOOK,
+    DESTROYED
+}
 
 public class ObjectController : MonoBehaviour
 {
@@ -21,9 +29,13 @@ public class ObjectController : MonoBehaviour
     [SerializeField]
     private float dmgPerHit;
 
+    [HideInInspector]
+    public ObjectState state;
+
     // Start is called before the first frame update
     void Start()
     {
+        state = ObjectState.IDLE;
         currentHP = MaxHP;
         HPText.text = currentHP + "/" + MaxHP;
     }
@@ -33,7 +45,7 @@ public class ObjectController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            BeginShake();
+            BeginShake(0);
         }
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -45,26 +57,57 @@ public class ObjectController : MonoBehaviour
         }
     }
 
-    void BeginShake()
+    public void BeginShake(int attackAmount)
     {
+        state = ObjectState.SHOOK;
         originalRotation = sprite.transform.localRotation.eulerAngles;
         Sequence s = DOTween.Sequence();
 
         s.Append(sprite.transform.DORotate(originalRotation + endRotation, shakeDuration).SetEase(Ease.InQuad).SetLoops(5, LoopType.Yoyo));
         s.Append(sprite.transform.DORotate(originalRotation, shakeDuration));
-       
+
+        StartCoroutine(Shake(attackAmount));
     }
 
     public void ChangeHP(float addedValue)
     {
         currentHP += addedValue;
         if (currentHP > MaxHP) currentHP = MaxHP;
-        if (currentHP < 0)
+        if (currentHP <= 0)
         {
+            state = ObjectState.DESTROYED;
             currentHP = 0;
+            if (SpookyAIManager.Instance.allObjects.Where(obj => obj.state == ObjectState.DESTROYED).Count() >= SpookyAIManager.Instance.objectLifes)
+            {
+                Debug.Log("Game Over.");
+            }
             //TO-DO Call Destroy? method.
         }
 
-        HPText.text = currentHP + "/" + MaxHP;
+        HPText.text = Mathf.Round(currentHP) + "/" + MaxHP;
     }
+
+    private IEnumerator Shake(int attackAmount)
+    {
+        while(attackAmount > 0)
+        {
+            yield return new WaitForSeconds(3);
+            attackAmount--;
+            ChangeHP(-dmgPerHit);
+
+            originalRotation = sprite.transform.localRotation.eulerAngles;
+            Sequence s = DOTween.Sequence();
+            s.Append(sprite.transform.DORotate(originalRotation + endRotation / 3, shakeDuration).SetEase(Ease.InQuad).SetLoops(5, LoopType.Yoyo));
+            s.Append(sprite.transform.DORotate(originalRotation, shakeDuration));
+
+            if (state == ObjectState.DESTROYED)
+                break;
+        }
+
+        yield return new WaitForSeconds(SpookyAIManager.Instance.maximumAttackDelay + 0.1f);
+
+        if (state != ObjectState.DESTROYED)
+            state = ObjectState.IDLE;
+    }
+    
 }
