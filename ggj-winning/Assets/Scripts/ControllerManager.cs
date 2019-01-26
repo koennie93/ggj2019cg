@@ -11,13 +11,23 @@ public enum State
 
 public class ControllerManager : MonoBehaviour
 {
-    private State state = State.MAIN_MENU;
+    public static ControllerManager Instance = null;
+
+    public State state = State.MAIN_MENU;
 
     public Dictionary<int, PlayerControl> controlDictionary = new Dictionary<int, PlayerControl>();
     public PlayerControl[] playerControls = new PlayerControl[4];
     public Text[] readyText = new Text[4];
 
     private int joined = 0;
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else if (Instance != this)
+            Destroy(gameObject);
+    }
 
     void Start()
     {
@@ -30,12 +40,11 @@ public class ControllerManager : MonoBehaviour
         if (state == State.MAIN_MENU && Input.GetKeyDown(KeyCode.JoystickButton9) && joined >= 2)
         {
             Debug.Log("START THE GAME");
-            StartCoroutine(FadeMenu());
-            
+            LevelManager.Instance.StartCoroutine("FadeMenu");
+            state = State.PLAYING;
         }
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
-            Debug.Log("X button was pressed.");
             // if menu and not pressed X
             if (state == State.MAIN_MENU && !controlDictionary.ContainsKey(1))
             {
@@ -46,12 +55,16 @@ public class ControllerManager : MonoBehaviour
             }
             else
             {
+                controlDictionary[1].XButtonPressed(true);
             }
+        }
+        else if (Input.GetKeyUp(KeyCode.Joystick1Button1))
+        {
+            controlDictionary[1].XButtonPressed(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick2Button1))
         {
-            Debug.Log("X button was pressed.");
             if (state == State.MAIN_MENU && !controlDictionary.ContainsKey(2))
             {
                 controlDictionary.Add(2, playerControls[joined]);
@@ -61,12 +74,16 @@ public class ControllerManager : MonoBehaviour
             }
             else
             {
+                controlDictionary[2].XButtonPressed(true);
             }
+        }
+        else if (Input.GetKeyUp(KeyCode.Joystick2Button1))
+        {
+            controlDictionary[2].XButtonPressed(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick3Button1))
         {
-            Debug.Log("X button was pressed.");
             if (state == State.MAIN_MENU && !controlDictionary.ContainsKey(3))
             {
                 controlDictionary.Add(3, playerControls[joined]);
@@ -86,7 +103,6 @@ public class ControllerManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Joystick4Button1))
         {
-            Debug.Log("X button was pressed.");
             if (state == State.MAIN_MENU && !controlDictionary.ContainsKey(4))
             {
                 controlDictionary.Add(4, playerControls[joined]);
@@ -118,17 +134,6 @@ public class ControllerManager : MonoBehaviour
     private void PlayerReady(int playerNumber)
     {
         readyText[playerNumber].color = new Color(0, 255, 0);
-        playerControls[playerNumber].gameObject.transform.position = new Vector3(0, 0, 0);
-    }
-
-    private IEnumerator FadeMenu()
-    {
-        CanvasGroup canvasGroup = GameObject.FindGameObjectWithTag("MainMenu").GetComponent<CanvasGroup>();
-        while (canvasGroup.alpha > 0)
-        {
-            canvasGroup.alpha -= Time.deltaTime;
-            yield return null;
-        }
-        //Application.LoadLevel("Scene2");
+        //playerControls[playerNumber].gameObject.transform.position = new Vector3(0, 0, 0);
     }
 }

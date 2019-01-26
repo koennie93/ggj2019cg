@@ -22,13 +22,15 @@ public class PlayerControl : MonoBehaviour
     {
         if (collidedObject != null)
         {
+            Debug.Log(xButton);
             if (Vector2.Distance(collidedObject.transform.position, transform.position) < 5 && xButton)
             {
                 if (collidedObject.GetComponent<ObjectController>().currentHP < 250 && collidedObject.GetComponent<ObjectController>().currentHP > 0)
                 {
                     collidedObject.GetComponent<ObjectController>().ChangeHP(1);
                     score++;
-                }                
+                }
+                xButton = false;
             }
         }
     }
@@ -53,7 +55,8 @@ public class PlayerControl : MonoBehaviour
     public void XButtonPressed(bool status)
     {
         xButton = status;
-        StartCoroutine("XPress", 1);
+        //Debug.Log(xButton);
+        //StartCoroutine("XPress", 1);
     }
 
     private IEnumerator XPress()

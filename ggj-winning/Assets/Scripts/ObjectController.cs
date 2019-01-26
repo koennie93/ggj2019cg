@@ -80,6 +80,7 @@ public class ObjectController : MonoBehaviour
             if (SpookyAIManager.Instance.allObjects.Where(obj => obj.state == ObjectState.DESTROYED).Count() >= SpookyAIManager.Instance.objectLifes)
             {
                 Debug.Log("Game Over.");
+                LevelManager.Instance.StartCoroutine("FadeEndScreen");
             }
             //TO-DO Call Destroy? method.
         }
@@ -109,5 +110,6 @@ public class ObjectController : MonoBehaviour
         if (state != ObjectState.DESTROYED)
             state = ObjectState.IDLE;
     }
+
     
 }

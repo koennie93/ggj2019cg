@@ -19,7 +19,10 @@ public class EndScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.JoystickButton9))
+        {
+            LevelManager.Instance.StartCoroutine("ResetGame");
+        }
     }
 
     public void SetText(int rank, string text)
