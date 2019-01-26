@@ -35,6 +35,7 @@ public class PlayerControl : MonoBehaviour
                     collidedObject.GetComponent<ObjectController>().ChangeHP(1);
                     score++;
                     SendScoreToUI(score);
+                    AudioManager.Instance.PlaySound(gameObject, "repair");
                 }
                 xButton = false;
             }

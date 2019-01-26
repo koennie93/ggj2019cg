@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 79225245}
   - component: {fileID: 79225244}
   - component: {fileID: 79225243}
+  - component: {fileID: 79225246}
   m_Layer: 0
   m_Name: MusicPlayer
   m_TagString: Untagged
@@ -142,7 +143,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ef78f4a940d13584b84ba6f0ed47c95d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -252,6 +253,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &79225246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79225242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619465edfe7265a46aa3f26d25981630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioFolderPath: Audio
 --- !u!114 &128603308 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 749900781576250578, guid: 5349b7fb9388de54d937d3fd73479775,
@@ -362,6 +376,12 @@ MonoBehaviour:
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &579022547 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 823733886, guid: 8bad309d0663b2c4a9a215799fc0211d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1883181532289278514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &627161714
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -540,6 +560,11 @@ PrefabInstance:
       propertyPath: endScreen
       value: 
       objectReference: {fileID: 128603308}
+    - target: {fileID: 1147977023809109109, guid: 3caf80c715dbe509f94a98cb27090045,
+        type: 3}
+      propertyPath: playerScores
+      value: 
+      objectReference: {fileID: 579022547}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3caf80c715dbe509f94a98cb27090045, type: 3}
 --- !u!1001 &690652750
@@ -1127,6 +1152,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3017734164795284186, guid: 8bad309d0663b2c4a9a215799fc0211d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 823733886, guid: 8bad309d0663b2c4a9a215799fc0211d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bad309d0663b2c4a9a215799fc0211d, type: 3}
 --- !u!1001 &3310019188575776082
@@ -1264,6 +1298,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1588006068, guid: 8785a3b6fd53dfd4ea88a603a2603888, type: 3}
+      propertyPath: objectLifes
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8785a3b6fd53dfd4ea88a603a2603888, type: 3}
