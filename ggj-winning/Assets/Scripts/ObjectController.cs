@@ -99,7 +99,7 @@ public class ObjectController : MonoBehaviour
                 break;
         }
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(SpookyAIManager.Instance.maximumAttackDelay + 0.1f);
 
         if (state != ObjectState.DESTROYED)
             state = ObjectState.IDLE;

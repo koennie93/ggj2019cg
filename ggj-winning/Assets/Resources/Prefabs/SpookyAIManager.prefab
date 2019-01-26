@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23b43e6345a37fc46b1bc035f5cb74ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSimultaneousAttacks: 3
+  difficultyIncreaseSpeedScale: 0.5
+  maxSimultaneousAttacks: 2
   minimumAttackDelay: 4
   maximumAttackDelay: 8
