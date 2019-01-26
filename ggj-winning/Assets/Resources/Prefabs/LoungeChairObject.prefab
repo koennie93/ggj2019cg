@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 212558335923614799}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.88, y: 1.92, z: 0}
-  m_LocalScale: {x: 0.29757, y: 0.29757, z: 0.29757}
+  m_LocalScale: {x: 0.02883604, y: 0.02883604, z: 0.02883604}
   m_Children: []
   m_Father: {fileID: 4138689756598749201}
   m_RootOrder: 1
@@ -84,7 +84,7 @@ TextMesh:
   m_Anchor: 0
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 0
+  m_FontSize: 128
   m_FontStyle: 0
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4138689756598749201}
   - component: {fileID: 4138689756598749200}
   m_Layer: 0
-  m_Name: LoungeChairObject 1
+  m_Name: LoungeChairObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -247,3 +247,4 @@ MonoBehaviour:
   endRotation: {x: 0, y: 0, z: 50}
   MaxHP: 250
   dmgPerHit: 10
+  state: 0
