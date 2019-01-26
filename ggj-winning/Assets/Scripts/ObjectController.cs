@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
 
 public enum ObjectState
 {
@@ -76,6 +77,10 @@ public class ObjectController : MonoBehaviour
         {
             state = ObjectState.DESTROYED;
             currentHP = 0;
+            if (SpookyAIManager.Instance.allObjects.Where(obj => obj.state == ObjectState.DESTROYED).Count() >= SpookyAIManager.Instance.objectLifes)
+            {
+                Debug.Log("Game Over.");
+            }
             //TO-DO Call Destroy? method.
         }
 
