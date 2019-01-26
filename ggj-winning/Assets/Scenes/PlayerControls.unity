@@ -161,7 +161,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0367ec9a9df70144a74d29c59e517f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 0.1
+  xButton: 0
+  collidedObject: {fileID: 0}
+  score: 0
 --- !u!212 &1067913807
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -273,7 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0367ec9a9df70144a74d29c59e517f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 0.1
+  xButton: 0
+  collidedObject: {fileID: 0}
+  score: 0
 --- !u!212 &1338556145
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -367,7 +373,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0367ec9a9df70144a74d29c59e517f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 0.1
+  xButton: 0
+  collidedObject: {fileID: 0}
+  score: 0
 --- !u!212 &1630379478
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -497,7 +506,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0367ec9a9df70144a74d29c59e517f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 0.1
+  xButton: 0
+  collidedObject: {fileID: 0}
+  score: 0
 --- !u!212 &1771587690
 SpriteRenderer:
   m_ObjectHideFlags: 0

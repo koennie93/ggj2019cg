@@ -66,7 +66,12 @@ public class ControllerManager : MonoBehaviour
             }
             else
             {
+                controlDictionary[3].XButtonPressed(true);
             }
+        }
+        else if (Input.GetKeyUp(KeyCode.Joystick3Button1))
+        {
+            controlDictionary[3].XButtonPressed(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick4Button1))
