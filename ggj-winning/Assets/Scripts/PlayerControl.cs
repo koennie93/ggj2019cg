@@ -30,7 +30,7 @@ public class PlayerControl : MonoBehaviour
             Debug.Log(xButton);
             if (Vector2.Distance(collidedObject.transform.position, transform.position) < 5 && xButton)
             {
-                if (collidedObject.GetComponent<ObjectController>().currentHP < 250 && collidedObject.GetComponent<ObjectController>().currentHP > 0)
+                if (collidedObject.GetComponent<ObjectController>().currentHP < 25 && collidedObject.GetComponent<ObjectController>().currentHP > 0)
                 {
                     collidedObject.GetComponent<ObjectController>().ChangeHP(1);
                     score++;
@@ -45,12 +45,12 @@ public class PlayerControl : MonoBehaviour
     {
         switch (currentPlayer.name)
         {
-            case "Player (1)":
-                uiManager.SetPlayerOneScore(Score.ToString());
+            case "Player1":
+                uiManager.SetPlayerOneScore("Player 1: " + Score.ToString());
                 break;
 
-            case "Player (2)":
-                uiManager.SetPlayerTwoScore(Score.ToString());
+            case "Player2":
+                uiManager.SetPlayerTwoScore("Player 2: " + Score.ToString());
                 break;
         }
     }
