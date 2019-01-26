@@ -67,6 +67,7 @@ public class SpookyAIManager : MonoBehaviour
                 maxSimultaneousAttacks += 0.2f + (difficultyIncreaseSpeedScale * 0.2f);
                 minimumAttackDelay *= 0.99f - (difficultyIncreaseSpeedScale * 0.1f);
                 maximumAttackDelay *= 0.99f - (difficultyIncreaseSpeedScale * 0.1f);
+                MusicPlayer.ChangeMusicPitch(0.025f);
             }
         }
     }
