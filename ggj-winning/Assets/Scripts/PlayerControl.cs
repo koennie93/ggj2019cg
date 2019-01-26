@@ -9,12 +9,17 @@ public class PlayerControl : MonoBehaviour
     public bool xButton = false;
     public GameObject collidedObject = null;
     public float score = 0;
-
-
+    
     private Vector3 moveDirection = Vector3.zero;
+
+    private UIManager uiManager;
+    private GameObject currentPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
+        currentPlayer = transform.root.gameObject;
+        uiManager = GameObject.Find("UI").GetComponent<UIManager>();
     }
 
     // Update is called once per frame
@@ -28,11 +33,27 @@ public class PlayerControl : MonoBehaviour
                 {
                     collidedObject.GetComponent<ObjectController>().ChangeHP(1);
                     score++;
+
+                    SendScoreToUI(score);
                 }                
             }
         }
     }
-    
+
+    private void SendScoreToUI(float Score)
+    {
+        switch (currentPlayer.name)
+        {
+            case "Player (1)":
+                uiManager.SetPlayerOneScore(Score.ToString());
+                break;
+
+            case "Player (2)":
+                uiManager.SetPlayerTwoScore(Score.ToString());
+                break;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "RoomObject")
