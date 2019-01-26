@@ -21,13 +21,6 @@ public class MusicPlayer : MonoBehaviour
     public static void StopPlaying()
     {
         audioSource.Stop();
-        audioSource.pitch = 1;
-    }
-
-    public static void RestartPlaying()
-    {
-        StopPlaying();
-        StartPlaying();
     }
 
     public static void SetMusicPitch(float pitch)
@@ -37,8 +30,7 @@ public class MusicPlayer : MonoBehaviour
 
     public static void ChangeMusicPitch(float deltaPitch)
     {
-        if(audioSource)
-            audioSource.pitch = audioSource.pitch + deltaPitch;
+        audioSource.pitch = audioSource.pitch + deltaPitch;
     }
 
 }

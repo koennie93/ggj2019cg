@@ -126,7 +126,6 @@ public class LevelManager : MonoBehaviour
             canvasGroup.alpha += Time.deltaTime;
             yield return null;
         }
-        MusicPlayer.RestartPlaying();
         Application.LoadLevel(Application.loadedLevel);
     }
 
