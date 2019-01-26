@@ -49,6 +49,7 @@ MonoBehaviour:
   HPText: {fileID: 7212427075761454188}
   endRotation: {x: 0, y: -80, z: 0}
   MaxHP: 250
+  currentHP: 0
   dmgPerHit: 10
 --- !u!1 &2771822288065772887
 GameObject:
@@ -154,7 +155,7 @@ GameObject:
   - component: {fileID: 5587870105841987624}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: RoomObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -234,7 +235,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.17543828, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -245,5 +246,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.77, y: 5.27}
+  m_Size: {x: 1.1208766, y: 5.27}
   m_EdgeRadius: 0

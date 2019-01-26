@@ -21,7 +21,7 @@ public class ControllerManager : MonoBehaviour
 
     void Start()
     {
-      
+
     }
 
     // Update is called once per frame
@@ -37,7 +37,7 @@ public class ControllerManager : MonoBehaviour
         {
             Debug.Log("X button was pressed.");
             // if menu and not pressed X
-            if(state == State.MAIN_MENU && !controlDictionary.ContainsKey(1))
+            if (state == State.MAIN_MENU && !controlDictionary.ContainsKey(1))
             {
                 controlDictionary.Add(1, playerControls[joined]);
                 PlayerReady(joined);
@@ -98,18 +98,19 @@ public class ControllerManager : MonoBehaviour
             {
                 controlDictionary[4].XButtonPressed(true);
             }
-        } else if (Input.GetKeyUp(KeyCode.Joystick4Button1))
+        }
+        else if (Input.GetKeyUp(KeyCode.Joystick4Button1))
         {
             controlDictionary[4].XButtonPressed(false);
         }
 
-            for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2 ||
                 Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
             {
-                
-                controlDictionary[i+1].Move(i);
+
+                controlDictionary[i + 1].Move(i);
             }
         }
     }
