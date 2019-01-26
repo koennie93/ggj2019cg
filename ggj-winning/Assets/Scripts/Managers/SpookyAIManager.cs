@@ -7,7 +7,7 @@ public class SpookyAIManager : MonoBehaviour
 {
     [HideInInspector] public static SpookyAIManager Instance = null;
 
-    public int objectLifes = 3;
+    public int objectLifes = 7;
 
     [Range(0.01f, 1.0f)] public float difficultyIncreaseSpeedScale = 0.5f;
     [Range(1, 10)] public float maxSimultaneousAttacks = 3;
@@ -63,10 +63,11 @@ public class SpookyAIManager : MonoBehaviour
             if (idleObjects.Length > 0 && shookObjectsAmount < Mathf.Floor(maxSimultaneousAttacks))
             {
                 idleObjects[Random.Range(0, idleObjects.Length)].BeginShake(attackAmount);
-
+                idleObjects[Random.Range(0, idleObjects.Length)].dmgPerHit *= 1.1f;
                 maxSimultaneousAttacks += 0.2f + (difficultyIncreaseSpeedScale * 0.2f);
                 minimumAttackDelay *= 0.99f - (difficultyIncreaseSpeedScale * 0.1f);
                 maximumAttackDelay *= 0.99f - (difficultyIncreaseSpeedScale * 0.1f);
+
                 MusicPlayer.ChangeMusicPitch(0.025f);
             }
         }

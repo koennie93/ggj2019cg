@@ -26,8 +26,7 @@ public class ObjectController : MonoBehaviour
     [SerializeField]
     private float MaxHP;
     public float currentHP;
-    [SerializeField]
-    private float dmgPerHit;
+    public float dmgPerHit;
 
     [HideInInspector]
     public ObjectState state;
@@ -63,7 +62,7 @@ public class ObjectController : MonoBehaviour
         originalRotation = sprite.transform.localRotation.eulerAngles;
         Sequence s = DOTween.Sequence();
 
-        s.Append(sprite.transform.DORotate(originalRotation + endRotation, shakeDuration).SetEase(Ease.InQuad).SetLoops(5, LoopType.Yoyo));
+        s.Append(sprite.transform.DORotate(originalRotation + endRotation / 3, shakeDuration).SetEase(Ease.InQuad).SetLoops(5, LoopType.Yoyo));
         s.Append(sprite.transform.DORotate(originalRotation, shakeDuration));
 
         StartCoroutine(Shake(attackAmount));
@@ -71,6 +70,11 @@ public class ObjectController : MonoBehaviour
 
     public void ChangeHP(float addedValue)
     {
+        if(addedValue < 0)
+        {
+            AudioManager.Instance.PlaySound(gameObject, gameObject.name + "Sound");
+        }
+
         currentHP += addedValue;
         if (currentHP > MaxHP) currentHP = MaxHP;
         if (currentHP <= 0)
@@ -98,7 +102,7 @@ public class ObjectController : MonoBehaviour
 
             originalRotation = sprite.transform.localRotation.eulerAngles;
             Sequence s = DOTween.Sequence();
-            s.Append(sprite.transform.DORotate(originalRotation + endRotation / 3, shakeDuration).SetEase(Ease.InQuad).SetLoops(5, LoopType.Yoyo));
+            s.Append(sprite.transform.DORotate(originalRotation + endRotation, shakeDuration).SetEase(Ease.InQuad).SetLoops(5, LoopType.Yoyo));
             s.Append(sprite.transform.DORotate(originalRotation, shakeDuration));
 
             if (state == ObjectState.DESTROYED)

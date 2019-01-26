@@ -8,8 +8,6 @@ public class UIManager : MonoBehaviour
     public Text playerOneScore;
     public Text playerTwoScore;
     
-    public string message;
-
     // Start is called before the first frame update
     void Start()
     {
