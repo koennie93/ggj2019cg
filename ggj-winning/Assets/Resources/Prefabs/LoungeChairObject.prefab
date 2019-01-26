@@ -101,10 +101,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4138689755433249257}
   - component: {fileID: 4138689755433249256}
-  - component: {fileID: 2997179559055775605}
+  - component: {fileID: 580782848}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: RoomObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2997179559055775605
+--- !u!61 &580782848
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 4138689756598749201}
   - component: {fileID: 4138689756598749200}
   m_Layer: 0
-  m_Name: LoungeChairObject 1
+  m_Name: LoungeChairObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

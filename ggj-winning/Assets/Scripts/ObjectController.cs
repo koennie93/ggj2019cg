@@ -17,7 +17,7 @@ public class ObjectController : MonoBehaviour
     private float shakeDuration = 0.1f;
     [SerializeField]
     private float MaxHP;
-    private float currentHP;
+    public float currentHP;
     [SerializeField]
     private float dmgPerHit;
 
@@ -55,7 +55,7 @@ public class ObjectController : MonoBehaviour
        
     }
 
-    void ChangeHP(float addedValue)
+    public void ChangeHP(float addedValue)
     {
         currentHP += addedValue;
         if (currentHP > MaxHP) currentHP = MaxHP;

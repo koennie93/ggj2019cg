@@ -38,7 +38,6 @@ public class ControllerManager : MonoBehaviour
             }
             else
             {
-                controlDictionary[1].Test(1);
             }
         }
 
@@ -53,7 +52,6 @@ public class ControllerManager : MonoBehaviour
             }
             else
             {
-                controlDictionary[2].Test(2);
             }
         }
 
@@ -68,7 +66,6 @@ public class ControllerManager : MonoBehaviour
             }
             else
             {
-                controlDictionary[3].Test(3);
             }
         }
 
@@ -83,11 +80,14 @@ public class ControllerManager : MonoBehaviour
             }
             else
             {
-                controlDictionary[4].Test(4);
+                controlDictionary[4].XButtonPressed(true);
             }
+        } else if (Input.GetKeyUp(KeyCode.Joystick4Button1))
+        {
+            controlDictionary[4].XButtonPressed(false);
         }
 
-        for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++)
         {
             if (Mathf.Abs(Input.GetAxis("Joy" + i + "X")) > 0.2 ||
                 Mathf.Abs(Input.GetAxis("Joy" + i + "Y")) > 0.2)
