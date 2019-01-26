@@ -7,6 +7,8 @@ public class SpookyAIManager : MonoBehaviour
 {
     [HideInInspector] public static SpookyAIManager Instance = null;
 
+    public int objectLifes = 3;
+
     [Range(0.01f, 1.0f)] public float difficultyIncreaseSpeedScale = 0.5f;
     [Range(1, 10)] public float maxSimultaneousAttacks = 3;
     [Range(1.0f, 12.0f)] public float minimumAttackDelay = 4.0f, maximumAttackDelay = 8.0f;
@@ -49,6 +51,12 @@ public class SpookyAIManager : MonoBehaviour
         maximumAttackDelay = originalMaximumAttackDelay;
     }
 
+    private void GameOver()
+    {
+        // TODO: Game over.
+        Debug.Log("Game over.");
+    }
+
     private IEnumerator SelectObjects(float minDelay, float maxDelay, int attackAmount)
     {
         while (true)
@@ -65,6 +73,11 @@ public class SpookyAIManager : MonoBehaviour
                 maxSimultaneousAttacks += 0.2f + (difficultyIncreaseSpeedScale * 0.2f);
                 minimumAttackDelay *= 0.99f - (difficultyIncreaseSpeedScale * 0.1f);
                 maximumAttackDelay *= 0.99f - (difficultyIncreaseSpeedScale * 0.1f);
+            }
+
+            if (allObjects.Where(obj => obj.state == ObjectState.DESTROYED).Count() >= objectLifes)
+            {
+                GameOver();
             }
         }
     }
