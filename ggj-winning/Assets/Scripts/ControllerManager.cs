@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-
- public enum State
+public enum State
 {
     MAIN_MENU,
     PLAYING
@@ -15,6 +15,7 @@ public class ControllerManager : MonoBehaviour
 
     public Dictionary<int, PlayerControl> controlDictionary = new Dictionary<int, PlayerControl>();
     public PlayerControl[] playerControls = new PlayerControl[4];
+    public Text[] readyText = new Text[4];
 
     private int joined = 0;
 
@@ -25,7 +26,13 @@ public class ControllerManager : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
+        if (state == State.MAIN_MENU && Input.GetKeyDown(KeyCode.JoystickButton9) && joined >= 2)
+        {
+            Debug.Log("START THE GAME");
+            StartCoroutine(FadeMenu());
+            
+        }
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
         {
             Debug.Log("X button was pressed.");
@@ -33,6 +40,7 @@ public class ControllerManager : MonoBehaviour
             if(state == State.MAIN_MENU && !controlDictionary.ContainsKey(1))
             {
                 controlDictionary.Add(1, playerControls[joined]);
+                PlayerReady(joined);
                 joined++;
                 Debug.Log("Controller " + 1 + "Connected");
             }
@@ -47,6 +55,7 @@ public class ControllerManager : MonoBehaviour
             if (state == State.MAIN_MENU && !controlDictionary.ContainsKey(2))
             {
                 controlDictionary.Add(2, playerControls[joined]);
+                PlayerReady(joined);
                 joined++;
                 Debug.Log("Controller " + 2 + "Connected");
             }
@@ -61,6 +70,7 @@ public class ControllerManager : MonoBehaviour
             if (state == State.MAIN_MENU && !controlDictionary.ContainsKey(3))
             {
                 controlDictionary.Add(3, playerControls[joined]);
+                PlayerReady(joined);
                 joined++;
                 Debug.Log("Controller " + 3 + "Connected");
             }
@@ -80,6 +90,7 @@ public class ControllerManager : MonoBehaviour
             if (state == State.MAIN_MENU && !controlDictionary.ContainsKey(4))
             {
                 controlDictionary.Add(4, playerControls[joined]);
+                PlayerReady(joined);
                 joined++;
                 Debug.Log("Controller " + 4 + "Connected");
             }
@@ -101,5 +112,22 @@ public class ControllerManager : MonoBehaviour
                 controlDictionary[i+1].Move(i);
             }
         }
+    }
+
+    private void PlayerReady(int playerNumber)
+    {
+        readyText[playerNumber].color = new Color(0, 255, 0);
+        playerControls[playerNumber].gameObject.transform.position = new Vector3(0, 0, 0);
+    }
+
+    private IEnumerator FadeMenu()
+    {
+        CanvasGroup canvasGroup = GameObject.FindGameObjectWithTag("MainMenu").GetComponent<CanvasGroup>();
+        while (canvasGroup.alpha > 0)
+        {
+            canvasGroup.alpha -= Time.deltaTime;
+            yield return null;
+        }
+        //Application.LoadLevel("Scene2");
     }
 }
