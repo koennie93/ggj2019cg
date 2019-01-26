@@ -30,7 +30,8 @@ public class MusicPlayer : MonoBehaviour
 
     public static void ChangeMusicPitch(float deltaPitch)
     {
-        audioSource.pitch = audioSource.pitch + deltaPitch;
+        if(audioSource)
+            audioSource.pitch = audioSource.pitch + deltaPitch;
     }
 
 }
