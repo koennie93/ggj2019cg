@@ -455,6 +455,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: ebed58795ae88bb4c905e87967860075,
         type: 3}
+    - target: {fileID: 6039796169048643635, guid: fa2441906c2a6404598aeb49f99146da,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa2441906c2a6404598aeb49f99146da, type: 3}
 --- !u!114 &627161715 stripped
@@ -798,11 +803,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EndScreen
-      objectReference: {fileID: 0}
-    - target: {fileID: 2472586657950624874, guid: 5349b7fb9388de54d937d3fd73479775,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4089330616996893701, guid: 5349b7fb9388de54d937d3fd73479775,
         type: 3}
@@ -1246,11 +1246,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room1
       objectReference: {fileID: 0}
-    - target: {fileID: 6450574736192793125, guid: 8785a3b6fd53dfd4ea88a603a2603888,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6450574736192793124, guid: 8785a3b6fd53dfd4ea88a603a2603888,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1305,24 +1300,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1622565598, guid: 8785a3b6fd53dfd4ea88a603a2603888, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8574030584620208600, guid: 8785a3b6fd53dfd4ea88a603a2603888,
-        type: 3}
-      propertyPath: m_Offset.x
-      value: -0.045010388
-      objectReference: {fileID: 0}
-    - target: {fileID: 8574030584620208600, guid: 8785a3b6fd53dfd4ea88a603a2603888,
-        type: 3}
-      propertyPath: m_Size.x
-      value: 3.270021
-      objectReference: {fileID: 0}
-    - target: {fileID: 1588006068, guid: 8785a3b6fd53dfd4ea88a603a2603888, type: 3}
-      propertyPath: objectLifes
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8785a3b6fd53dfd4ea88a603a2603888, type: 3}

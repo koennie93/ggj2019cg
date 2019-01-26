@@ -14,6 +14,9 @@ public enum ObjectState
 public class ObjectController : MonoBehaviour
 {
     [SerializeField]
+    private GameObject explosionPrefab;
+
+    [SerializeField]
     private SpriteRenderer sprite;
 
     [SerializeField]
@@ -79,6 +82,10 @@ public class ObjectController : MonoBehaviour
         if (currentHP > MaxHP) currentHP = MaxHP;
         if (currentHP <= 0)
         {
+            AudioManager.Instance.PlaySound(gameObject, "explosionSound", 1.0f, false);
+            Instantiate(explosionPrefab, sprite.transform.position, Quaternion.identity);
+            sprite.gameObject.SetActive(false);
+            HPText.gameObject.SetActive(false);
             state = ObjectState.DESTROYED;
             currentHP = 0;
             if (SpookyAIManager.Instance.allObjects.Where(obj => obj.state == ObjectState.DESTROYED).Count() >= SpookyAIManager.Instance.objectLifes)

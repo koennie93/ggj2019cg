@@ -136,6 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ace0f15a1d5c62438bdf85816873642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 2538187731690770177, guid: 6fcfef3026220f1479c482ecd6ccf87d,
+    type: 3}
   sprite: {fileID: 8475487056007544121}
   HPText: {fileID: 6619842955408961079}
   endRotation: {x: 0, y: 0, z: 0}

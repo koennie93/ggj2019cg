@@ -136,10 +136,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ace0f15a1d5c62438bdf85816873642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 2538187731690770177, guid: 6fcfef3026220f1479c482ecd6ccf87d,
+    type: 3}
   sprite: {fileID: 2977144575036874482}
   HPText: {fileID: 3957227465635293700}
   endRotation: {x: 0, y: 0, z: 30}
   MaxHP: 250
+  currentHP: 0
   dmgPerHit: 10
   state: 0
 --- !u!1 &8981065722535624217
