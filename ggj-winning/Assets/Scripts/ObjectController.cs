@@ -96,7 +96,7 @@ public class ObjectController : MonoBehaviour
     {
         while(attackAmount > 0)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(SpookyAIManager.Instance.attackDelay);
             attackAmount--;
             ChangeHP(-dmgPerHit);
 
@@ -109,7 +109,7 @@ public class ObjectController : MonoBehaviour
                 break;
         }
 
-        yield return new WaitForSeconds(SpookyAIManager.Instance.maximumAttackDelay + 0.1f);
+        yield return new WaitForSeconds(10);
 
         if (state != ObjectState.DESTROYED)
             state = ObjectState.IDLE;

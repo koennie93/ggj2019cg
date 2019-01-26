@@ -11,8 +11,8 @@ public class SpookyAIManager : MonoBehaviour
 
     [Range(0.01f, 1.0f)] public float difficultyIncreaseSpeedScale = 0.5f;
     [Range(1, 10)] public float maxSimultaneousAttacks = 3;
-    [Range(1.0f, 12.0f)] public float minimumAttackDelay = 4.0f, maximumAttackDelay = 8.0f;
-    private float originalMaxSimultaneousAttacks,  originalMinimumAttackDelay, originalMaximumAttackDelay;
+    [Range(1.0f, 12.0f)] public float attackDelay = 4.0f;
+    private float originalMaxSimultaneousAttacks,  originalMinimumAttackDelay;
 
     [HideInInspector] public ObjectController[] allObjects;
     private Coroutine ai;
@@ -25,8 +25,7 @@ public class SpookyAIManager : MonoBehaviour
             Destroy(gameObject);
 
         originalMaxSimultaneousAttacks = maxSimultaneousAttacks;
-        originalMinimumAttackDelay = minimumAttackDelay;
-        originalMaximumAttackDelay = maximumAttackDelay;
+        originalMinimumAttackDelay = attackDelay;
 
         allObjects = FindObjectsOfType<ObjectController>();
         StartAI();
@@ -35,7 +34,7 @@ public class SpookyAIManager : MonoBehaviour
     public void StartAI()
     {
         StopAI();
-        ai = StartCoroutine(SelectObjects(minimumAttackDelay, maximumAttackDelay, 5));
+        ai = StartCoroutine(SelectObjects(attackDelay, 5));
     }
 
     public void StopAI()
@@ -47,15 +46,14 @@ public class SpookyAIManager : MonoBehaviour
         ai = null;
 
         maxSimultaneousAttacks = originalMaxSimultaneousAttacks;
-        minimumAttackDelay = originalMinimumAttackDelay;
-        maximumAttackDelay = originalMaximumAttackDelay;
+        attackDelay = originalMinimumAttackDelay;
     }
 
-    private IEnumerator SelectObjects(float minDelay, float maxDelay, int attackAmount)
+    private IEnumerator SelectObjects(float minDelay, int attackAmount)
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(minDelay, maxDelay));
+            yield return new WaitForSeconds(Random.Range(4.0f, 8.0f));
 
             ObjectController[] idleObjects = allObjects.Where(obj => obj.state == ObjectState.IDLE).ToArray();
             int shookObjectsAmount = allObjects.Where(obj => obj.state == ObjectState.SHOOK).Count();
@@ -65,8 +63,7 @@ public class SpookyAIManager : MonoBehaviour
                 idleObjects[Random.Range(0, idleObjects.Length)].BeginShake(attackAmount);
                 idleObjects[Random.Range(0, idleObjects.Length)].dmgPerHit *= 1.1f;
                 maxSimultaneousAttacks += 0.2f + (difficultyIncreaseSpeedScale * 0.2f);
-                minimumAttackDelay *= 0.99f - (difficultyIncreaseSpeedScale * 0.1f);
-                maximumAttackDelay *= 0.99f - (difficultyIncreaseSpeedScale * 0.1f);
+                attackDelay = Mathf.Clamp(attackDelay * (0.99f - (difficultyIncreaseSpeedScale * 0.1f)), 2.5f, Mathf.Infinity);
 
                 MusicPlayer.ChangeMusicPitch(0.025f);
             }
