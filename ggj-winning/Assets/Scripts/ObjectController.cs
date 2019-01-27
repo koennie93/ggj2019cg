@@ -74,6 +74,9 @@ public class ObjectController : MonoBehaviour
         if(addedValue < 0)
         {
             AudioManager.Instance.PlaySound(gameObject, gameObject.name + "Sound");
+            GameObject healthTextObject = Instantiate(ObjectsManager.Instance.HealthTextObjectPrefab, sprite.transform.position, Quaternion.identity);
+            healthTextObject.GetComponent<TextMesh>().text = addedValue.ToString();
+            healthTextObject.GetComponent<TextMesh>().color = Color.red;
         }
 
         currentHP += addedValue;
