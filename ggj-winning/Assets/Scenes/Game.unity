@@ -1779,10 +1779,15 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 555572745}
-    - target: {fileID: 8843817800822549165, guid: 8785a3b6fd53dfd4ea88a603a2603888,
+    - target: {fileID: 1925544619975477540, guid: 8785a3b6fd53dfd4ea88a603a2603888,
         type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.84
+      propertyPath: m_OffsetZ
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130405192034553110, guid: 8785a3b6fd53dfd4ea88a603a2603888,
+        type: 3}
+      propertyPath: m_OffsetZ
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8785a3b6fd53dfd4ea88a603a2603888, type: 3}

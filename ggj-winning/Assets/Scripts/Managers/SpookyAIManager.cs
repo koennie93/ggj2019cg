@@ -8,7 +8,7 @@ public class SpookyAIManager : MonoBehaviour
     [HideInInspector] public static SpookyAIManager Instance = null;
 
     public int objectLifes = 3;
-    public TextMesh livesLeftText;
+    public TextMesh livesLeftText, introText0, introText1;
 
     [Range(0.01f, 1.0f)] public float difficultyIncreaseSpeedScale = 0.5f;
     [Range(1, 10)] public float maxSimultaneousAttacks = 3;
@@ -39,6 +39,7 @@ public class SpookyAIManager : MonoBehaviour
         StopAI();
         ai = StartCoroutine(SelectObjects(attackDelay, 5));
         livesLeftText.text = string.Format("{0}\tLives Left", objectLifes);
+        StartCoroutine(FadeInIntroText());
     }
 
     public void StopAI()
@@ -73,5 +74,46 @@ public class SpookyAIManager : MonoBehaviour
                 MusicPlayer.ChangeMusicPitch(0.025f);
             }
         }
+    }
+
+    IEnumerator FadeInIntroText ()
+    {
+        // Text 0
+        introText0.gameObject.SetActive(true);
+        while(introText0.color.a < 1)
+        {
+            yield return new WaitForEndOfFrame();
+            Color temp = introText0.color;
+            temp.a += Time.deltaTime;
+            introText0.color = temp;
+        }
+        yield return new WaitForSeconds(1.5f);
+        while (introText0.color.a > 0)
+        {
+            yield return new WaitForEndOfFrame();
+            Color temp = introText0.color;
+            temp.a -= Time.deltaTime;
+            introText0.color = temp;
+        }
+        introText0.gameObject.SetActive(false);
+
+        // Text 1
+        introText1.gameObject.SetActive(true);
+        while (introText1.color.a < 1)
+        {
+            yield return new WaitForEndOfFrame();
+            Color temp = introText1.color;
+            temp.a += Time.deltaTime;
+            introText1.color = temp;
+        }
+        yield return new WaitForSeconds(1.5f);
+        while (introText1.color.a > 0)
+        {
+            yield return new WaitForEndOfFrame();
+            Color temp = introText1.color;
+            temp.a -= Time.deltaTime;
+            introText1.color = temp;
+        }
+        introText1.gameObject.SetActive(false);
     }
 }
