@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 using System.Linq;
 
@@ -20,9 +21,6 @@ public class ObjectController : MonoBehaviour
     private SpriteRenderer sprite;
 
     [SerializeField]
-    private TextMesh HPText;
-
-    [SerializeField]
     private Vector3 endRotation;
     private Vector3 originalRotation;
     private float shakeDuration = 0.1f;
@@ -30,6 +28,7 @@ public class ObjectController : MonoBehaviour
     private float MaxHP;
     public float currentHP;
     public float dmgPerHit;
+    public Image healthBar; 
 
     [HideInInspector]
     public ObjectState state;
@@ -39,7 +38,6 @@ public class ObjectController : MonoBehaviour
     {
         state = ObjectState.IDLE;
         currentHP = MaxHP;
-        HPText.text = currentHP + "/" + MaxHP;
     }
 
     // Update is called once per frame
@@ -79,13 +77,14 @@ public class ObjectController : MonoBehaviour
         }
 
         currentHP += addedValue;
+        healthBar.DOFillAmount((1 / MaxHP * currentHP), 0.5f);
         if (currentHP > MaxHP) currentHP = MaxHP;
         if (currentHP <= 0)
         {
             AudioManager.Instance.PlaySound(gameObject, "explosionSound", 1.0f, false);
             Instantiate(explosionPrefab, sprite.transform.position, Quaternion.identity);
             sprite.gameObject.SetActive(false);
-            HPText.gameObject.SetActive(false);
+            
             state = ObjectState.DESTROYED;
             currentHP = 0;
             if (SpookyAIManager.Instance.allObjects.Where(obj => obj.state == ObjectState.DESTROYED).Count() >= SpookyAIManager.Instance.objectLifes)
@@ -94,9 +93,7 @@ public class ObjectController : MonoBehaviour
                 LevelManager.Instance.StartCoroutine("FadeEndScreen");
             }
             //TO-DO Call Destroy? method.
-        }
-
-        HPText.text = Mathf.Round(currentHP) + "/" + MaxHP;
+        }      
     }
 
     private IEnumerator Shake(int attackAmount)

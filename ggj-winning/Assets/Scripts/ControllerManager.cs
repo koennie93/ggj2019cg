@@ -17,7 +17,8 @@ public class ControllerManager : MonoBehaviour
 
     public Dictionary<int, PlayerControl> controlDictionary = new Dictionary<int, PlayerControl>();
     public PlayerControl[] playerControls = new PlayerControl[4];
-    public Text[] readyText = new Text[4];
+    public GameObject[] readyText = new GameObject[2];
+    public GameObject[] playerImage = new GameObject[2];
 
     private int joined = 0;
 
@@ -133,7 +134,9 @@ public class ControllerManager : MonoBehaviour
 
     private void PlayerReady(int playerNumber)
     {
-        readyText[playerNumber].color = new Color(0, 255, 0);
+        readyText[playerNumber].transform.Find("T_Player").GetComponent<Text>().color = new Color(0, 255, 0);
+        readyText[playerNumber].transform.Find("JoinText").gameObject.SetActive(false);
+        playerImage[playerNumber].SetActive(true);
         //playerControls[playerNumber].gameObject.transform.position = new Vector3(0, 0, 0);
     }
 }
