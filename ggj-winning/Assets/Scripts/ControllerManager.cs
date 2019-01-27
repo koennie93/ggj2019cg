@@ -57,11 +57,13 @@ public class ControllerManager : MonoBehaviour
             else
             {
                 controlDictionary[1].XButtonPressed(true);
+                controlDictionary[1].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             }
         }
         else if (Input.GetKeyUp(KeyCode.Joystick1Button1))
         {
             controlDictionary[1].XButtonPressed(false);
+            controlDictionary[1].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick2Button1))
@@ -76,11 +78,13 @@ public class ControllerManager : MonoBehaviour
             else
             {
                 controlDictionary[2].XButtonPressed(true);
+                controlDictionary[2].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             }
         }
         else if (Input.GetKeyUp(KeyCode.Joystick2Button1))
         {
             controlDictionary[2].XButtonPressed(false);
+            controlDictionary[2].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick3Button1))
@@ -95,11 +99,13 @@ public class ControllerManager : MonoBehaviour
             else
             {
                 controlDictionary[3].XButtonPressed(true);
+                controlDictionary[3].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             }
         }
         else if (Input.GetKeyUp(KeyCode.Joystick3Button1))
         {
             controlDictionary[3].XButtonPressed(false);
+            controlDictionary[3].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick4Button1))
@@ -114,11 +120,13 @@ public class ControllerManager : MonoBehaviour
             else
             {
                 controlDictionary[4].XButtonPressed(true);
+                controlDictionary[1].GetComponent<SpriteRenderer>().color = new Color(0.5f, 0.5f, 0.5f);
             }
         }
         else if (Input.GetKeyUp(KeyCode.Joystick4Button1))
         {
             controlDictionary[4].XButtonPressed(false);
+            controlDictionary[4].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1);
         }
 
         for (int i = 0; i < 4; i++)
