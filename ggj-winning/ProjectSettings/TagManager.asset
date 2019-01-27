@@ -8,6 +8,7 @@ TagManager:
   - MainMenu
   - Loading
   - Room1
+  - HealthBars
   layers:
   - Default
   - TransparentFX

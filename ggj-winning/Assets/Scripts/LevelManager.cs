@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
     private EndScreen endScreen;
     [SerializeField]
     private GameObject playerScores;
+    [SerializeField]
+    private GameObject healthBars;
 
     private void Awake()
     {
@@ -44,6 +46,7 @@ public class LevelManager : MonoBehaviour
         _Levels[levelId].SetActive(true);
         currentLevel = levelId;
         playerScores.SetActive(true);
+        healthBars.SetActive(true);
 
         foreach (KeyValuePair<int, PlayerControl> player in ControllerManager.Instance.controlDictionary)
         {
@@ -60,6 +63,7 @@ public class LevelManager : MonoBehaviour
     {
         _Levels[currentLevel].SetActive(false);
         playerScores.SetActive(false);
+        healthBars.SetActive(false);
 
         foreach (KeyValuePair<int, PlayerControl> player in ControllerManager.Instance.controlDictionary)
         {

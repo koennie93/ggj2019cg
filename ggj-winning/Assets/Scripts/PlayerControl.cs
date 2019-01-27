@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerControl : MonoBehaviour
 
     private UIManager uiManager;
     private GameObject currentPlayer;
+
 
     // Start is called before the first frame update
     void Start()
@@ -82,7 +84,7 @@ public class PlayerControl : MonoBehaviour
         {
             if (collision.transform.parent.GetComponent<ObjectController>().currentHP < 25 && collision.transform.parent.GetComponent<ObjectController>().currentHP > 0)
             {
-                collision.transform.parent.GetComponent<ObjectController>().ChangeHP(1);
+                collision.transform.parent.GetComponent<ObjectController>().ChangeHP(1);            
                 score++;
                 SendScoreToUI(score);
                 AudioManager.Instance.PlaySound(gameObject, "repair");
