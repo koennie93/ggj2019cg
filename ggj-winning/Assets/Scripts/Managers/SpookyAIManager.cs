@@ -7,7 +7,8 @@ public class SpookyAIManager : MonoBehaviour
 {
     [HideInInspector] public static SpookyAIManager Instance = null;
 
-    public int objectLifes = 7;
+    public int objectLifes = 3;
+    public TextMesh livesLeftText;
 
     [Range(0.01f, 1.0f)] public float difficultyIncreaseSpeedScale = 0.5f;
     [Range(1, 10)] public float maxSimultaneousAttacks = 3;
@@ -16,6 +17,8 @@ public class SpookyAIManager : MonoBehaviour
 
     [HideInInspector] public ObjectController[] allObjects;
     private Coroutine ai;
+
+    private int minTime = 3, maxTime = 3;
 
     private void Awake()
     {
@@ -35,6 +38,7 @@ public class SpookyAIManager : MonoBehaviour
     {
         StopAI();
         ai = StartCoroutine(SelectObjects(attackDelay, 5));
+        livesLeftText.text = string.Format("{0}\tLives Left", objectLifes);
     }
 
     public void StopAI()
@@ -53,8 +57,9 @@ public class SpookyAIManager : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(4.0f, 8.0f));
-
+            yield return new WaitForSeconds(Random.Range(minTime, maxTime));
+            minTime = 4;
+            maxTime = 8;
             ObjectController[] idleObjects = allObjects.Where(obj => obj.state == ObjectState.IDLE).ToArray();
             int shookObjectsAmount = allObjects.Where(obj => obj.state == ObjectState.SHOOK).Count();
 

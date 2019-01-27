@@ -1331,6 +1331,8 @@ MonoBehaviour:
   tutorials: []
   HealthTextObjectPrefab: {fileID: 614615183850083601, guid: 06f1f6167161c804f932dbf5cc60efc2,
     type: 3}
+  spellPrefab: {fileID: 6053474915466377641, guid: 636868a489f3ac846b4df19ace4f9a2e,
+    type: 3}
 --- !u!4 &2001605384
 Transform:
   m_ObjectHideFlags: 0
@@ -1435,6 +1437,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883181531204660935, guid: 8bad309d0663b2c4a9a215799fc0211d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1883181531204660939, guid: 8bad309d0663b2c4a9a215799fc0211d,
         type: 3}
@@ -1687,11 +1694,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room1
       objectReference: {fileID: 0}
-    - target: {fileID: 6450574736192793125, guid: 8785a3b6fd53dfd4ea88a603a2603888,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6450574736192793124, guid: 8785a3b6fd53dfd4ea88a603a2603888,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1747,16 +1749,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2614723619958307441, guid: 8785a3b6fd53dfd4ea88a603a2603888,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 2614723619958307441, guid: 8785a3b6fd53dfd4ea88a603a2603888,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.05
-      objectReference: {fileID: 0}
     - target: {fileID: 7484634418769721102, guid: 8785a3b6fd53dfd4ea88a603a2603888,
         type: 3}
       propertyPath: healthBar
@@ -1787,6 +1779,11 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 555572745}
+    - target: {fileID: 8843817800822549165, guid: 8785a3b6fd53dfd4ea88a603a2603888,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.84
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8785a3b6fd53dfd4ea88a603a2603888, type: 3}
 --- !u!1 &6450574736192793125 stripped

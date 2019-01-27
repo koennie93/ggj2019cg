@@ -16,7 +16,7 @@ public class ObjectsManager : MonoBehaviour
 
     public Object[] tutorials;
     public Dictionary<string, ObjectController> tutorialDictionary = new Dictionary<string, ObjectController>();
-    public GameObject HealthTextObjectPrefab;
+    public GameObject HealthTextObjectPrefab, spellPrefab;
 
     private void Awake()
     {

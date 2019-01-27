@@ -90,6 +90,9 @@ public class ObjectController : MonoBehaviour
             
             state = ObjectState.DESTROYED;
             currentHP = 0;
+
+            SpookyAIManager.Instance.livesLeftText.text = string.Format("{0}\tLives Left", SpookyAIManager.Instance.objectLifes - SpookyAIManager.Instance.allObjects.Where(obj => obj.state == ObjectState.DESTROYED).Count());
+
             if (SpookyAIManager.Instance.allObjects.Where(obj => obj.state == ObjectState.DESTROYED).Count() >= SpookyAIManager.Instance.objectLifes)
             {
                 Debug.Log("Game Over.");

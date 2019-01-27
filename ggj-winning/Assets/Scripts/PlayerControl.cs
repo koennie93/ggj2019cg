@@ -88,6 +88,7 @@ public class PlayerControl : MonoBehaviour
                 score++;
                 SendScoreToUI(score);
                 AudioManager.Instance.PlaySound(gameObject, "repair");
+                GameObject spell = Instantiate(ObjectsManager.Instance.spellPrefab, transform.position + new Vector3(0 , 1, 0), Quaternion.identity);
                 GameObject healthTextObject = Instantiate(ObjectsManager.Instance.HealthTextObjectPrefab, transform.position, Quaternion.identity);
                 healthTextObject.GetComponent<TextMesh>().text = "+1";
                 healthTextObject.GetComponent<TextMesh>().color = Color.green;
