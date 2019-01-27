@@ -25,17 +25,19 @@ public class EndScreen : MonoBehaviour
         }
     }
 
-    public void SetText(int rank, string text)
+    public void SetText(int rank, string text, Color color)
     {
         switch (rank)
         {
             case 1:
                 player1.gameObject.SetActive(true);
                 player1.text = text;
+                player1.color = color;
                 break;
             case 2:
                 player2.gameObject.SetActive(true);
                 player2.text = text;
+                player2.color = color;
                 break;
             case 3:
                 player3.gameObject.SetActive(true);

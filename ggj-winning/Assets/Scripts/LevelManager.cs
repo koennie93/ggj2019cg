@@ -142,8 +142,15 @@ public class LevelManager : MonoBehaviour
             for (int j = 0; j < ControllerManager.Instance.controlDictionary.Count; j++)    
             {
                 if (scoreOrder[i] == ControllerManager.Instance.controlDictionary.ElementAt(j).Value.score)
-                {
-                    endScreen.SetText(i + 1, "Player" + (j + 1) + " - " + scoreOrder[i] + " Points");
+                {                  
+                    if (j + 1 == 1)
+                    {
+                        endScreen.SetText(i + 1, "Player" + (j + 1) + " - " + scoreOrder[i] + " Points", Color.red);
+                    }
+                    else if (j + 1 == 2)
+                    {
+                        endScreen.SetText(i + 1, "Player" + (j + 1) + " - " + scoreOrder[i] + " Points", Color.blue);
+                    }
                 }
             }
         }
