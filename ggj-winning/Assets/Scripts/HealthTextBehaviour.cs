@@ -10,6 +10,7 @@ public class HealthTextBehaviour : MonoBehaviour
     void Start()
     {
         tm = GetComponent<TextMesh>();
+        transform.Translate(new Vector3(Random.Range(-0.25f, 0.25f), 0, 0));
     }
 
     // Update is called once per frame

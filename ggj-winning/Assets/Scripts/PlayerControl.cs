@@ -24,26 +24,6 @@ public class PlayerControl : MonoBehaviour
         uiManager = GameObject.Find("UI").GetComponent<UIManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        //if (collidedObject != null)
-        //{
-        //    Debug.Log(xButton);
-        //    if (Vector2.Distance(collidedObject.transform.position, transform.position) < 5 && xButton)
-        //    {
-        //        if (collidedObject.GetComponent<ObjectController>().currentHP < 25 && collidedObject.GetComponent<ObjectController>().currentHP > 0)
-        //        {
-        //            collidedObject.GetComponent<ObjectController>().ChangeHP(1);
-        //            score++;
-        //            SendScoreToUI(score);
-        //            AudioManager.Instance.PlaySound(gameObject, "repair");
-        //        }
-        //        xButton = false;
-        //    }
-        //}
-    }
-
     private void SendScoreToUI(float Score)
     {
         switch (currentPlayer.name)
@@ -58,31 +38,11 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "RoomObject")
-    //    {
-    //        collidedObject = collision.transform.parent.gameObject;
-    //    }
-    //}
-
-    //private void OnCollisionStay2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.tag == "RoomObject" && xButton)
-    //    {
-    //        collidedObject.GetComponent<ObjectController>().ChangeHP(1);
-    //        score++;
-    //        SendScoreToUI(score);
-    //        AudioManager.Instance.PlaySound(gameObject, "repair");
-    //        xButton = false;
-    //    }
-    //}
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "RoomObject" && xButton)
         {
-            if (collision.transform.parent.GetComponent<ObjectController>().currentHP < 25 && collision.transform.parent.GetComponent<ObjectController>().currentHP > 0)
+            if (collision.transform.parent.GetComponent<ObjectController>().currentHP < collision.transform.parent.GetComponent<ObjectController>().MaxHP && collision.transform.parent.GetComponent<ObjectController>().currentHP > 0)
             {
                 collision.transform.parent.GetComponent<ObjectController>().ChangeHP(1);            
                 score++;

@@ -18,7 +18,7 @@ public class SpookyAIManager : MonoBehaviour
     [HideInInspector] public ObjectController[] allObjects;
     private Coroutine ai;
 
-    private int minTime = 3, maxTime = 3;
+    private int minTime = 7, maxTime = 7;
 
     private void Awake()
     {

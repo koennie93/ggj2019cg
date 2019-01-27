@@ -19,6 +19,7 @@ public class ControllerManager : MonoBehaviour
     public PlayerControl[] playerControls = new PlayerControl[4];
     public GameObject[] readyText = new GameObject[2];
     public GameObject[] playerImage = new GameObject[2];
+    public GameObject startGameText;
 
     private int joined = 0;
 
@@ -38,6 +39,10 @@ public class ControllerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (state == State.MAIN_MENU && joined >= 2)
+        {
+            startGameText.SetActive(true);
+        }
         if (state == State.MAIN_MENU && Input.GetKeyDown(KeyCode.JoystickButton9) && joined >= 2)
         {
             Debug.Log("START THE GAME");

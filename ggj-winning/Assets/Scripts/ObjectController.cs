@@ -25,7 +25,7 @@ public class ObjectController : MonoBehaviour
     private Vector3 originalRotation;
     private float shakeDuration = 0.1f;
     [SerializeField]
-    private float MaxHP;
+    public float MaxHP;
     public float currentHP;
     public float dmgPerHit;
     public Image healthBar; 
@@ -84,10 +84,11 @@ public class ObjectController : MonoBehaviour
         if (currentHP > MaxHP) currentHP = MaxHP;
         if (currentHP <= 0)
         {
+
             AudioManager.Instance.PlaySound(gameObject, "explosionSound", 1.0f, false);
             Instantiate(explosionPrefab, sprite.transform.position, Quaternion.identity);
             sprite.gameObject.SetActive(false);
-            
+            healthBar.transform.parent.gameObject.SetActive(false);
             state = ObjectState.DESTROYED;
             currentHP = 0;
 
